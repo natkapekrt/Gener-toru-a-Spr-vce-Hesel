@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Generátoru a Správce Hesel</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <h2 style="text-align: center;"> Generátoru a Správce Hesel</h2>
+    <form>
+    <label for="fname">Jméno</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <label for="lname">Příjmení</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <label for="email">Email</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <label for="password">Heslo</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <button type="register" value="register">Registrace</button>
+  </form>
+
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #cc41c0;
+        border-radius: 5px;
+        background-color: #d742cd;
+    }
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+    }
+    input[type="checkbox"] {
+        margin-right: 5px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #d439e2;
+        color: rgb(206, 67, 190);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 2px solid rgb(240, 233, 233);
+       
+    }
+    button:hover {
+        background-color: #c03bd8;
+    }
+    #password {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ce41be;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+</style>
+</head>
+<body>
+
+<form id="passwordForm">
+    <label for="length">Délka hesla:</label>
+    <input type="number" id="length" name="length" min="6" max="20" value="12">
+    <br>
+    <input type="checkbox" id="includeNumbers" name="includeNumbers" checked>
+    <label for="includeNumbers">Zahrnout čísla (0-9)</label>
+    <br>
+    <input type="checkbox" id="includeSymbols" name="includeSymbols">
+    <label for="includeSymbols">Zahrnout speciální znaky (@, $, *, atd.)</label>
+    <br>
+    <input type="checkbox" id="includeUppercase" name="includeUppercase" checked>
+    <label for="includeUppercase">Zahrnout velká písmena (A-Z)</label>
+    <br>
+    <button type="button" onclick="generatePassword()">Generovat heslo</button>
+</form>
+
+<div id="password"></div>
+
+<script>
+    function generatePassword() {
+        var length = document.getElementById("length").value;
+        var includeNumbers = document.getElementById("includeNumbers").checked;
+        var includeSymbols = document.getElementById("includeSymbols").checked;
+        var includeUppercase = document.getElementById("includeUppercase").checked;
+
+        var charset = "abcdefghijklmnopqrstuvwxyz";
+        var password = "";
+        
+        if (includeNumbers) charset += "0123456789";
+        if (includeSymbols) charset += "!@#$%^&*()_+~`|}{[]:;?><,./-=";
+        if (includeUppercase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        for (var i = 0; i < length; i++) {
+            password += charset.charAt(Math.floor(Math.random() * charset.length));
+        }
+
+        document.getElementById("password").textContent = password;
+    }
+</script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #cc7edd;
+        border-radius: 5px;
+        background-color: rgb(203, 80, 203);
+    }
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+    }
+    input[type="checkbox"] {
+        margin-right: 5px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #e910e9;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #c30bd7;
+    }
+    #password {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+    #savedPasswords {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+    }
+    #savedPasswords p {
+        margin: 5px 0;
+    }
+</style>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #cc48c3;
+        border-radius: 5px;
+        background-color: #c952b7;
+    }
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #b542bb;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #b542bb;
+    }
+</style>
+</head>
+<body>
+
+    <div class="login-container">
+        <form id="loginForm" class="login-form">
+            <h2>Přihlášení</h2>
+            <div class="input-group">
+                <label for="username">Uživatelské jméno:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Heslo:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Přihlásit se</button>
+        </form>
+        <div id="loginMessage" class="login-message"></div>
+    </div>
+    <style>
+        .form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #cc7edd;
+        border-radius: 5px;
+        background-color: rgb(203, 80, 203);
+    }
+    </style>
+    
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+    
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+    
+           
+            var savedPassword = localStorage.getItem(username);
+    
+            if (!savedPassword || savedPassword !== password) {
+                document.getElementById("loginMessage").textContent = "Neplatné uživatelské jméno nebo heslo.";
+            } else {
+                document.getElementById("loginMessage").textContent = "Přihlášení úspěšné.";
+            
+            }
+        });
+    </script>
+    
+    <div class="container">
+        <form id="passwordForm" class="password-form">
+            <div class="input-group">
+                <label for="account">Název účtu:</label>
+                <input type="text" id="account" name="account" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Heslo:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Uložit heslo</button>
+        </form>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Hledej podle názvu účtu...">
+            <button id="searchButton">Vyhledat</button>
+        </div>
+        <div id="passwordList" class="password-list"></div>
+    </div>
+    
+    <script src="script.js"></script>
+
+    
+</body>
+</html>
